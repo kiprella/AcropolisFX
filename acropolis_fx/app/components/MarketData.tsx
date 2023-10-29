@@ -2,26 +2,46 @@
 
 import React from 'react';
 import { useMarketData } from '../hooks/useMarketData';
+import Container from './Container';
 
-const symbols = ['BTCUSD'];
+const symbols = ['BTCUSD','ETHUSD'];
+
 
 function HomePage() {
   const symbolData = useMarketData(symbols);
 
+  function PlaceOrder(symbol: any) {
+    const price = (symbol)
+    console.log(price);
+  }
+
   return (
+
+    <Container>
+    <h1 className='justify-center flex pt-5'>Markets:</h1>
     <div>
-      <h1>Market Data</h1>
       {symbols.map(symbol => (
         <div key={symbol}>
           {symbolData[symbol] && (
-            <div>
-              <p>Symbol: {symbol}</p>
-              <p>Last Price: {symbolData[symbol].lp}</p>
+            
+            <div className='
+              flex
+              flex-row
+              pt-5
+              justify-center
+            '>
+              <p>{symbol} - Last Price: ${symbolData[symbol].lp}</p>
+              <button className='bg-white text-black'onClick={() => {
+            alert('Order placed at: $' + symbolData[symbol].lp);
+            PlaceOrder(symbolData[symbol].lp)
+          }
+          }>Place order</button>
             </div>
           )}
         </div>
       ))}
     </div>
+    </Container>
   );
 }
 

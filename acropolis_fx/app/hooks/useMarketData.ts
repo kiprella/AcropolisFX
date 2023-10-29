@@ -1,3 +1,4 @@
+import { timeStamp } from 'console';
 import { useState, useEffect, useRef } from 'react';
 import { TvApiAdapter } from 'tradingview-api-adapter';
 
