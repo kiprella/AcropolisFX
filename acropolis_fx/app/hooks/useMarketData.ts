@@ -1,17 +1,15 @@
-import { timeStamp } from 'console';
 import { useState, useEffect, useRef } from 'react';
 import { TvApiAdapter } from 'tradingview-api-adapter';
 
 const adapter = new TvApiAdapter();
 
-export function useMarketData(symbols: string[]) {
+export function useMarketData(symbols: string[], exchange: string) {
   const [symbolData, setSymbolData] = useState<{ [symbol: string]: any }>({});
   const isMounted = useRef(true);
 
   useEffect(() => {
     isMounted.current = true;
 
-    const exchange = 'BINANCE';
     const fields = ['lp', 'ch', 'chp'];
 
     const listeners = symbols.map(symbol => {
@@ -28,7 +26,7 @@ export function useMarketData(symbols: string[]) {
     return () => {
       isMounted.current = false;
     };
-  }, [symbols]);
+  }, [symbols, exchange]);
 
   return symbolData;
 }
