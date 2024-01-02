@@ -1,7 +1,7 @@
 // pages/index.tsx
 import MarketData from "./components/MarketData";
 import Navbar from "./components/navbar/Navbar";
-import TradingViewWidget from "./components/TradingView/TradingViewWidget";
+import TradingViewWidget from "./components/TradingViewWidget";
 
 
 
